@@ -10,7 +10,7 @@ The `WORKSPACE` file in the root directory defines the top of the target bierarc
 
 ## nix
 
-[`nix`](https://github.com/NixOS) is used for package management of common dependencies. It allows for hermetic/reproducable builds is a number of ways:
+[`nix`](https://nixos.org/nix/) is used for package management of common dependencies. It allows for hermetic/reproducable builds is a number of ways:
 
 * It manages third party code handling source code, dependencies, and other package management tasks.
 * It is version-controlled, so dependencies can easily be rolled forward or backwards.

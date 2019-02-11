@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package example;
+
+import "google/protobuf/any.proto";
+
+message Thing {
+  string name = 1;
+  string use = 2;
+
+  google.protobuf.Any payload = 3;
+}

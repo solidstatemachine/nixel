@@ -1,0 +1,1 @@
+nix-env -qaP --description $@

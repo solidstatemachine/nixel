@@ -23,6 +23,12 @@ Related scripts, configuration, etc. are located in the `//nix` directory.
 
 `//nix:glog.bzl` has an example for how to write your own nix build script.
 
+### nix: Quick Install
+
+You can quickly install nix and begin using it by running the following command. Proper installation instructions are at [nixos.org/nix/manual](https://nixos.org/nix/manual/#chap-quick-start). 
+
+    bash <(curl https://nixos.org/nix/install)
+
 ## clodl
 
 [`clodl`](https://github.com/tweag/clodl) is a tool that produces a single, self-contained file packing all dependencies of a dynamically linked executable. The authors describe it as a poor man's container image so you can deploy to foreign machines without concerns about missing dependencies.

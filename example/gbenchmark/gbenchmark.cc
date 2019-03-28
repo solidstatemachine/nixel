@@ -7,7 +7,10 @@
 
 BENCHMARK_MAIN()
 
-static void measure_thing(benchmark::State &state) {
+constexpr size_t max_range{10000000};
+#define BENCH_COMPLX(x) BENCHMARK(x)->RangeMultiplier(10)->Range(10, max_range)->Complexity(benchmark::oN)
+
+static void measure_thing(benchmark::State& state) {
   std::string s1(state.range(0), '-');
   std::string s2(state.range(0), '-');
   for (auto _ : state) {
@@ -16,7 +19,4 @@ static void measure_thing(benchmark::State &state) {
   state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK(measure_thing)
-    ->RangeMultiplier(10)
-    ->Range(10, 10000000)
-    ->Complexity(benchmark::oN);
+BENCH_COMPLX(measure_thing);

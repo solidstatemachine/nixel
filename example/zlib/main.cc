@@ -26,7 +26,7 @@ void exit_if_zerr(int ret) {
     default:
       fputs("unknown zlib error!\n", stderr);
       exit(ret);
-    }
+  }
 }
 
 int main() {
@@ -45,14 +45,14 @@ int main() {
   std::cout << "Compressing \"" << input << "\" which is "
             << input.size() << " bytes.\n";
   strm.avail_in = input.size();
-  strm.next_in = (Bytef*)input.data();
+  strm.next_in = (Bytef*) input.data();
 
-  std::string zip(1<<10, '\0');
+  std::string zip(1 << 10, '\0');
   strm.avail_out = zip.size();
-  strm.next_out = (Bytef*)zip.data();
+  strm.next_out = (Bytef*) zip.data();
   exit_if_zerr(deflate(&strm, Z_SYNC_FLUSH));
   zip.resize(zip.size() - strm.avail_out);
-  (void)deflateEnd(&strm);
+  (void) deflateEnd(&strm);
   std::cout << "Compressed to " << zip.size() << " bytes.\n";
 
   std::cout << "Uncompressing...\n";
@@ -63,14 +63,14 @@ int main() {
   strm.next_in = Z_NULL;
   exit_if_zerr(inflateInit(&strm));
 
-  std::string unzip(1<<10, '\0');
+  std::string unzip(1 << 10, '\0');
   strm.avail_in = zip.size();
-  strm.next_in = (Bytef*)zip.data();
+  strm.next_in = (Bytef*) zip.data();
   strm.avail_out = unzip.size();
-  strm.next_out = (Bytef*)unzip.data();
+  strm.next_out = (Bytef*) unzip.data();
   exit_if_zerr(inflate(&strm, Z_NO_FLUSH));
   unzip.resize(unzip.size() - strm.avail_out);
-  (void)inflateEnd(&strm);
+  (void) inflateEnd(&strm);
 
   std::cout << "Uncompressed to " << unzip.size()
             << " bytes as \"" << unzip << "\"\n";
